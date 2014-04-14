@@ -1,0 +1,56 @@
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Login 
+{
+	public static void main(String[] args) 
+	{
+		
+		FirefoxDriver login = new FirefoxDriver(); 
+	    
+// Delete member if the member is exist with the same email address.
+		
+	    login.get("http://sandbox.passbrains.com/controllers/registerController.php?action=deleteMember&email=PB.automation@hotmail.com");
+	    
+		login.get("http://sandbox.passbrains.com");
+		
+	    login.manage().window().maximize();
+	    
+/*	    Test Register email address :- pb.automation@outlook.com
+ 		Password :- {Passbrains@123}
+*/
+	    
+	    login.findElementByXPath(".//*[@id='registertype']").click();
+	   
+	    login.findElementByXPath(".//*[@id='expbut']/a/span").click();
+	    
+	    login.findElementByXPath(".//*[@id='first_name']").sendKeys("PB Platform");
+	    
+	    login.findElementByXPath(".//*[@id='last_name']").sendKeys("Automated Testing");
+	    
+	    login.findElementByXPath(".//*[@id='email']").sendKeys("pb.automation@outlook.com");
+	    
+	    login.findElementByXPath(".//*[@id='phone']").sendKeys("9886863191");
+	    
+	    login.findElementByXPath(".//*[@id='skype']").sendKeys("Abhinav.sejpal");
+	    
+	    login.findElementByXPath(".//*[@id='paypal']").sendKeys("bug.wrangler@outlook.com");
+	    
+	    login.findElementByXPath(".//*[@id='country']").sendKeys("India");
+	    
+	    login.findElementByXPath(".//*[@id='cityc']").sendKeys("Bangalore");
+	    
+	    
+	    
+	    
+	    
+	    	    
+
+
+	    
+	    
+
+
+//      login.quit();
+
+	}
+}

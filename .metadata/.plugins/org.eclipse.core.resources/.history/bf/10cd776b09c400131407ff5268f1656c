@@ -1,0 +1,30 @@
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class Login 
+{
+
+	public static void main(String[] args) 
+	{
+		
+		FirefoxDriver login = new FirefoxDriver(); 
+	    login.get("http://sandbox.passbrains.com");
+	    login.manage().window().maximize();
+	    
+	    
+// Delete member if the member is exist with the same email address.
+	    
+	    login.get("http://sandbox.passbrains.com");
+	    
+//	    Test Register email address :- PB.automation@hotmail.com
+	    
+	    login.manage().window().maximize();
+	    
+		
+		
+	    
+	    login.quit();
+
+	}
+
+}
