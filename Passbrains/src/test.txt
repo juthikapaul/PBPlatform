@@ -1,0 +1,29 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+public class joinnow {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+FirefoxDriver d1=new FirefoxDriver();
+d1.get("http://passbrains.com/");
+d1.manage().window().maximize();
+d1.findElementByXPath(".//*[@id='registertype']").click();
+d1.findElementByXPath(".//*[@id='expbut']/a/span").click();
+d1.findElementByXPath(".//*[@id='first_name']").sendKeys("sasmita");
+d1.findElementByXPath(".//*[@id='last_name']").sendKeys("Tripathy");
+d1.findElementByXPath(".//*[@id='email']").sendKeys("sasmita.rout2111@gmail.com");
+Select dropdown = new Select(driver.findElement(By.id("country")));
+d1.findElementByXPath(".//*[@id='cityc']").sendKeys("Banglore");
+d1.findElementByXPath(".//*[@id='zip']").sendKeys("560010");
+d1.findElementByXPath(".//*[@id='street']").sendKeys("panthur");
+d1.findElementByXPath(".//*[@id='gender2']").click();
+Select dropdown = new Select(driver.findElement(By.id("year")));
+d1.findElementByXPath(".//*[@id='exp']").sendKeys("4");
+d1.findElementByXPath(".//*[@id='register-merged']/div[4]/div/input[3]").click();
+d1.close();
+	}
+}
