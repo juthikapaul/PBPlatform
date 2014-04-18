@@ -1,0 +1,177 @@
+package passbrains;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+class TestExpertReg
+{
+	
+	public String baseURLSandbox ="http://sandbox.passbrains.com";
+	public String baseURLLive="http://passbrains.com";
+	public FirefoxDriver login = new FirefoxDriver();
+	
+	public void TestEXpertReg(){
+	}
+	
+	public void prerequisite(){
+
+		// Test the Sandbox connection
+		
+		login.manage().window().maximize();
+		
+		//.htaccess  - Popup 
+		
+		login.get("http://abhinav:sandbox.abhinav@sandbox.passbrains.com");
+		
+		try{
+			
+		    // Delete member if the member is exist with the same email address.
+			
+			login.get("http://sandbox.passbrains.com/controllers/registerController.php?action=deleteMember&email=PB.automation@outlook.com");
+			
+			Thread.sleep(300);
+					
+			// Captcha Code cheat service
+			
+			login.get("http://sandbox.passbrains.com/controllers/captchaController.php?action=testavoid");
+			
+			Thread.sleep(300);
+			
+			login.get(baseURLSandbox);
+			
+		}	
+		catch (InterruptedException e) 
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void joinTesterExpert() 
+	{
+		 login.findElementByXPath(".//*[@id='registertype']").click();
+		 
+		 try 
+		 {
+			 Thread.sleep(1000);
+		 }
+		 catch(InterruptedException e)
+		 {
+		 
+		 }
+		 
+		 login.findElementByXPath(".//*[@id='expbut']/a/span").click();
+		
+	}
+	
+	public void TesterExpertInput()
+	{
+		
+        login.findElementByXPath(".//*[@id='first_name']").sendKeys("PB Platform");
+	    
+	    login.findElementByXPath(".//*[@id='last_name']").sendKeys("Automated Testing Bangalore");
+	    
+	    /*
+	  	
+		Test Register email address :- pb.automation@outlook.com
+ 		Password :- {Passbrains@123}
+ 		
+        */
+		    
+	    login.findElementByXPath(".//*[@id='email']").sendKeys("pb.automation@outlook.com");
+	    
+	    login.findElementByXPath(".//*[@id='phone']").sendKeys("9886863191");
+	    
+	    login.findElementByXPath(".//*[@id='skype']").sendKeys("Abhinav.sejpal Test Automation");
+	    
+	    login.findElementByXPath(".//*[@id='paypal']").sendKeys("bug.wrangler@outlook.com");
+	    
+        Select X = new Select(login.findElementByXPath(".//*[@id='country']"));
+        
+        X.selectByVisibleText("India");
+        
+        login.findElementByXPath(".//*[@id='cityc']").clear();
+        
+	    login.findElementByXPath(".//*[@id='cityc']").sendKeys("Bangalore");
+	
+		 try 
+		 {
+			 Thread.sleep(1000);
+		 }
+		 catch(InterruptedException e)
+		 {
+		 
+		 }
+    	
+	    // Delay till system offers Popup option.
+	    	 
+
+	     login.findElement(By.xpath("//html/body/ul/li/a")).click();
+	    
+		 //html/body/ul  - Popup X Path + li/a > First Option.  		
+	    
+	    login.findElementByXPath(".//*[@id='zip']").sendKeys("363310");
+	    
+	    login.findElementByXPath(".//*[@id='street']").sendKeys("Virani Park");
+	    
+	    login.findElementByXPath(".//*[@id='gender1']").click();
+	    
+	    login.findElementByXPath(".//*[@id='year']").sendKeys("1990");
+	    
+	    login.findElementByXPath(".//*[@id='exp']").sendKeys("4");
+	    
+	    login.findElementByXPath(".//*[@id='hours']").sendKeys("1-5");
+	    
+	    login.findElementByXPath(".//*[@id='terms']").click();
+	    
+	    login.findElementByXPath(".//*[@id='register-merged']/div[4]/div/input[3]").click();
+	    
+	    try 
+		 {
+			 Thread.sleep(1000);
+		 }
+		 catch(InterruptedException e)
+		 {
+		 
+		 }
+   	
+	   
+//      login.quit();
+	    
+	}
+	
+	public int TesterRegCheck()
+	{
+		
+		return 1;
+	}
+}
+	
+public class Login 
+{
+	
+	public static void main(String[] args) 
+	{
+	    int x=0;
+	    
+		TestExpertReg testerexp = new TestExpertReg();
+		
+		testerexp.prerequisite();
+		testerexp.joinTesterExpert();
+		testerexp.TesterExpertInput();
+		x= testerexp.TesterRegCheck();
+		
+		if (x==1)
+		{
+			System.out.println(" User Registrations successfully =  " + Integer.toString(x));  	
+		}
+		else
+		{
+			System.out.println(" User Registrations has failed   =  " + Integer.toString(x));
+		}
+		}
+		
+		
+	}
+}
